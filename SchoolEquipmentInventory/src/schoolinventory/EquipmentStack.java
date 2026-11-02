@@ -40,3 +40,12 @@ public class EquipmentStack {
 
         return stack[top];
     }
+          public boolean isEmpty() {
+        return top == -1;
+    }
+           public boolean isFull() {
+        return top == capacity - 1;
+    }
+           public int size() {
+        return top + 1;
+    }
