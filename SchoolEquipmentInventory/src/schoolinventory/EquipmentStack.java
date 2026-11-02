@@ -20,3 +20,15 @@ public class EquipmentStack {
         stack[++top] = equipment;
         return true;
     }
+       public Equipment pop() {
+
+        if (isEmpty()) {
+            return null;
+        }
+
+        Equipment removed = stack[top];
+        stack[top] = null;
+        top--;
+
+        return removed;
+    }
