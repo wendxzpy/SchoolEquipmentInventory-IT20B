@@ -49,3 +49,37 @@ public class EquipmentStack {
            public int size() {
         return top + 1;
     }
+           public Equipment search(String equipmentID) {
+
+        for (int i = top; i >= 0; i--) {
+
+            if (stack[i].getEquipmentID()
+                    .equalsIgnoreCase(equipmentID)) {
+
+                return stack[i];
+            }
+        }
+
+        return null;
+    }
+            public boolean updateAvailability(
+            String equipmentID, String newAvailability) {
+
+        Equipment equipment = search(equipmentID);
+
+        if (equipment == null) {
+            return false;
+        }
+
+        equipment.setAvailability(newAvailability);
+        return true;
+        
+        public Equipment getEquipment(int index) {
+
+        if (index < 0 || index > top) {
+            return null;
+        }
+
+        return stack[index];
+    }
+}
