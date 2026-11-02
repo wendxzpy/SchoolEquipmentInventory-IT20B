@@ -32,3 +32,11 @@ public class EquipmentStack {
 
         return removed;
     }
+        public Equipment peek() {
+
+        if (isEmpty()) {
+            return null;
+        }
+
+        return stack[top];
+    }
