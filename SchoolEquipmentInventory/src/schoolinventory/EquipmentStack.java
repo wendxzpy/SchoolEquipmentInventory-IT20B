@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package schoolinventory;
 
-/**
- *
- * @author wendz
- */
 public class EquipmentStack {
-    
-}
+
+    private Equipment[] stack;
+    private int top;
+    private int capacity;
+
+    public EquipmentStack(int capacity) {
+        this.capacity = capacity;
+        stack = new Equipment[capacity];
+        top = -1;
+    }
