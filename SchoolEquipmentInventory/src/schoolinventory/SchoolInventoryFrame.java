@@ -82,3 +82,65 @@ public class SchoolInventoryFrame extends JFrame {
         inputPanel.add(cmbAvailability);
 
         centerPanel.add(inputPanel, BorderLayout.NORTH);
+// BUTTON PANEL
+        JPanel buttonPanel = new JPanel(
+                new GridLayout(1, 4, 10, 10));
+
+        buttonPanel.setBackground(
+                new Color(240, 245, 240));
+
+        JButton btnRegister = new JButton("Register");
+        JButton btnDisplay = new JButton("Display Records");
+        JButton btnSearch = new JButton("Search");
+        JButton btnUpdate = new JButton("Update Status");
+
+        styleButton(btnRegister);
+        styleButton(btnDisplay);
+        styleButton(btnSearch);
+        styleButton(btnUpdate);
+
+        buttonPanel.add(btnRegister);
+        buttonPanel.add(btnDisplay);
+        buttonPanel.add(btnSearch);
+        buttonPanel.add(btnUpdate);
+
+        centerPanel.add(buttonPanel, BorderLayout.CENTER);
+
+        // TABLE PANEL
+        String[] columns = {
+            "Equipment ID",
+            "Equipment Name",
+            "Category",
+            "Quantity",
+            "Availability"
+        };
+
+        tableModel = new DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        equipmentTable = new JTable(tableModel);
+        equipmentTable.setRowHeight(25);
+        equipmentTable.setFont(new Font("Arial", Font.PLAIN, 13));
+
+        equipmentTable.getTableHeader().setFont(
+                new Font("Arial", Font.BOLD, 13));
+
+        equipmentTable.getTableHeader().setBackground(
+                new Color(29, 76, 59));
+
+        equipmentTable.getTableHeader().setForeground(Color.WHITE);
+
+        JScrollPane scrollPane = new JScrollPane(equipmentTable);
+
+        scrollPane.setBorder(
+                BorderFactory.createTitledBorder("Equipment Records"));
+
+        centerPanel.add(scrollPane, BorderLayout.SOUTH);
+
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+
+        add(mainPanel);
