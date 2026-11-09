@@ -172,3 +172,41 @@ public class SchoolInventoryFrame extends JFrame {
         button.setBorderPainted(false);
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
+     // REGISTER EQUIPMENT
+    private void registerEquipment() {
+
+        String id = txtID.getText().trim();
+        String name = txtName.getText().trim();
+        String category = txtCategory.getText().trim();
+        String quantityText = txtQuantity.getText().trim();
+
+        if (id.isEmpty() || name.isEmpty()
+                || category.isEmpty() || quantityText.isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Please fill in all fields!",
+                    "Input Error",
+                    JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
+        int quantity;
+
+        try {
+            quantity = Integer.parseInt(quantityText);
+
+            if (quantity <= 0) {
+                JOptionPane.showMessageDialog(
+                        this, "Quantity must be greater than zero!");
+                return;
+            }
+
+        } catch (NumberFormatException ex) {
+
+            JOptionPane.showMessageDialog(
+                    this, "Please enter a valid quantity!");
+
+            return;
+        }
