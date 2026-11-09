@@ -352,3 +352,22 @@ public class SchoolInventoryFrame extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+ // CLEAR INPUT FIELDS
+    private void clearFields() {
+
+        txtID.setText("");
+        txtName.setText("");
+        txtCategory.setText("");
+        txtQuantity.setText("");
+
+        cmbAvailability.setSelectedIndex(0);
+    }
+
+    // MAIN METHOD
+    public static void main(String[] args) {
+
+        SwingUtilities.invokeLater(() -> {
+            new SchoolInventoryFrame().setVisible(true);
+        });
+    }
+}
