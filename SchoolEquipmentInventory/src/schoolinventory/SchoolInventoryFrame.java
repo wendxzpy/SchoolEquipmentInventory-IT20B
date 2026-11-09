@@ -269,3 +269,48 @@ public class SchoolInventoryFrame extends JFrame {
             }
         }
     }
+      // SEARCH EQUIPMENT
+    private void searchEquipment() {
+
+        String id = txtID.getText().trim();
+
+        if (id.isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this, "Please enter an Equipment ID!");
+
+            return;
+        }
+
+        Equipment equipment = equipmentStack.search(id);
+
+        if (equipment != null) {
+
+            txtName.setText(equipment.getEquipmentName());
+            txtCategory.setText(equipment.getCategory());
+            txtQuantity.setText(
+                    String.valueOf(equipment.getQuantity()));
+
+            cmbAvailability.setSelectedItem(
+                    equipment.getAvailability());
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Equipment Found!\n\n"
+                    + "ID: " + equipment.getEquipmentID()
+                    + "\nName: " + equipment.getEquipmentName()
+                    + "\nCategory: " + equipment.getCategory()
+                    + "\nQuantity: " + equipment.getQuantity()
+                    + "\nAvailability: " + equipment.getAvailability(),
+                    "Search Result",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Equipment ID not found!",
+                    "Search Result",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
