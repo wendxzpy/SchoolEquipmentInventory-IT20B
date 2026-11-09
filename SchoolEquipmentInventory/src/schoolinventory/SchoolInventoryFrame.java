@@ -84,7 +84,7 @@ public class SchoolInventoryFrame extends JFrame {
         centerPanel.add(inputPanel, BorderLayout.NORTH);
 // BUTTON PANEL
         JPanel buttonPanel = new JPanel(
-                new GridLayout(1, 4, 10, 10));
+        new GridLayout(1, 5, 10, 10));
 
         buttonPanel.setBackground(
                 new Color(240, 245, 240));
