@@ -1,3 +1,4 @@
+
 package schoolinventory;
 
 public class EquipmentStack {
@@ -6,12 +7,15 @@ public class EquipmentStack {
     private int top;
     private int capacity;
 
+    // CONSTRUCTOR
     public EquipmentStack(int capacity) {
         this.capacity = capacity;
         stack = new Equipment[capacity];
         top = -1;
     }
-     public boolean push(Equipment equipment) {
+
+    // PUSH - ADD EQUIPMENT
+    public boolean push(Equipment equipment) {
 
         if (isFull()) {
             return false;
@@ -20,7 +24,9 @@ public class EquipmentStack {
         stack[++top] = equipment;
         return true;
     }
-       public Equipment pop() {
+
+    // POP - REMOVE TOP EQUIPMENT
+    public Equipment pop() {
 
         if (isEmpty()) {
             return null;
@@ -32,7 +38,9 @@ public class EquipmentStack {
 
         return removed;
     }
-        public Equipment peek() {
+
+    // PEEK - VIEW TOP EQUIPMENT
+    public Equipment peek() {
 
         if (isEmpty()) {
             return null;
@@ -40,16 +48,24 @@ public class EquipmentStack {
 
         return stack[top];
     }
-          public boolean isEmpty() {
+
+    // CHECK IF STACK IS EMPTY
+    public boolean isEmpty() {
         return top == -1;
     }
-           public boolean isFull() {
+
+    // CHECK IF STACK IS FULL
+    public boolean isFull() {
         return top == capacity - 1;
     }
-           public int size() {
+
+    // GET STACK SIZE
+    public int size() {
         return top + 1;
     }
-           public Equipment search(String equipmentID) {
+
+    // SEARCH EQUIPMENT BY ID
+    public Equipment search(String equipmentID) {
 
         for (int i = top; i >= 0; i--) {
 
@@ -62,7 +78,9 @@ public class EquipmentStack {
 
         return null;
     }
-            public boolean updateAvailability(
+
+    // UPDATE EQUIPMENT AVAILABILITY
+    public boolean updateAvailability(
             String equipmentID, String newAvailability) {
 
         Equipment equipment = search(equipmentID);
@@ -73,8 +91,10 @@ public class EquipmentStack {
 
         equipment.setAvailability(newAvailability);
         return true;
-        
-        public Equipment getEquipment(int index) {
+    }
+
+    // GET EQUIPMENT BY INDEX
+    public Equipment getEquipment(int index) {
 
         if (index < 0 || index > top) {
             return null;
