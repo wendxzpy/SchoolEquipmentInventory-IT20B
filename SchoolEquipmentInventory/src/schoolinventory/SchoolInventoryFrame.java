@@ -144,3 +144,31 @@ public class SchoolInventoryFrame extends JFrame {
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
         add(mainPanel);
+// BUTTON ACTIONS
+
+        // REGISTER EQUIPMENT
+        btnRegister.addActionListener(e -> registerEquipment());
+
+        // DISPLAY EQUIPMENT
+        btnDisplay.addActionListener(e -> displayEquipment());
+
+        // SEARCH EQUIPMENT
+        btnSearch.addActionListener(e -> searchEquipment());
+
+        // UPDATE AVAILABILITY
+        btnUpdate.addActionListener(e -> updateEquipment());
+
+        // INITIAL DISPLAY
+        displayEquipment();
+    }
+
+    // BUTTON DESIGN
+    private void styleButton(JButton button) {
+
+        button.setBackground(new Color(29, 76, 59));
+        button.setForeground(Color.WHITE);
+        button.setFont(new Font("Arial", Font.BOLD, 12));
+        button.setFocusPainted(false);
+        button.setBorderPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
