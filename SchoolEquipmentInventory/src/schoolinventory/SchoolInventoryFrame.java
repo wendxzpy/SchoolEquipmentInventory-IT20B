@@ -314,3 +314,41 @@ public class SchoolInventoryFrame extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+ // UPDATE AVAILABILITY
+    private void updateEquipment() {
+
+        String id = txtID.getText().trim();
+
+        if (id.isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this, "Please enter an Equipment ID!");
+
+            return;
+        }
+
+        String newAvailability =
+                cmbAvailability.getSelectedItem().toString();
+
+        boolean updated = equipmentStack.updateAvailability(
+                id, newAvailability);
+
+        if (updated) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Equipment availability successfully updated!",
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            displayEquipment();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Equipment ID not found!",
+                    "Update Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
