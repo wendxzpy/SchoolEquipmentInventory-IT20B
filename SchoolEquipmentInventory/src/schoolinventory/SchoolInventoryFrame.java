@@ -210,3 +210,62 @@ public class SchoolInventoryFrame extends JFrame {
 
             return;
         }
+ // CHECK DUPLICATE ID
+        if (equipmentStack.search(id) != null) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Equipment ID already exists!",
+                    "Duplicate Record",
+                    JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
+        String availability =
+                cmbAvailability.getSelectedItem().toString();
+
+        Equipment equipment = new Equipment(
+                id, name, category, quantity, availability);
+
+        // PUSH INTO STACK
+        if (equipmentStack.push(equipment)) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Equipment successfully registered!",
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            clearFields();
+            displayEquipment();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this, "Stack is full!");
+        }
+    }
+
+    // DISPLAY EQUIPMENT
+    private void displayEquipment() {
+
+        tableModel.setRowCount(0);
+
+        for (int i = equipmentStack.size() - 1; i >= 0; i--) {
+
+            Equipment equipment =
+                    equipmentStack.getEquipment(i);
+
+            if (equipment != null) {
+
+                tableModel.addRow(new Object[]{
+                    equipment.getEquipmentID(),
+                    equipment.getEquipmentName(),
+                    equipment.getCategory(),
+                    equipment.getQuantity(),
+                    equipment.getAvailability()
+                });
+            }
+        }
+    }
